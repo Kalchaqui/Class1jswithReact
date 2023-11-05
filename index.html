@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Seguro ejercicio clase1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        .insurance-cost {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de Seguro</h1>
+        <form id="insurance-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="tipo-seguro">Tipo de Seguro:</label>
+            <select id="tipo-seguro" name="tipo-seguro" required>
+                <option value="basico">Básico</option>
+                <option value="intermedio">Intermedio</option>
+                <option value="premium">Premium</option>
+            </select>
+
+            <p>Costo del Seguro: <span class="insurance-cost">$500</span></p>
+
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <script>
+        const tipoSeguro = document.getElementById("tipo-seguro");
+        const insuranceCost = document.querySelector(".insurance-cost");
+
+        tipoSeguro.addEventListener("change", () => {
+            const selecopcion = tipoSeguro.value;
+            let costo = 0;
+
+            switch (selecopcion) {
+                case "basico":
+                    costo = 500;
+                    break;
+                case "intermedio":
+                    costo = 1000;
+                    break;
+                case "premium":
+                    costo = 1500;
+                    break;
+                default:
+                    costo = 0;
+            }
+
+            insuranceCost.textContent = `$${costo}`;
+        });
+    </script>
+</body>
+</html>
